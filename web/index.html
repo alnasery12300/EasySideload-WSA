@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EasySideload Web Player</title>
+    <link rel="stylesheet" href="./player.css" />
+  </head>
+  <body>
+    <main class="player-shell">
+      <header class="player-header">
+        <h1>EasySideload Web Player</h1>
+        <p class="player-subtitle">
+          This lightweight player automatically picks a playable source and falls back
+          to HLS.js when your browser does not support HLS streams natively.
+        </p>
+      </header>
+
+      <section class="player-wrapper" aria-live="polite">
+        <div class="player-aspect">
+          <video
+            id="web-player"
+            class="player"
+            controls
+            preload="metadata"
+            playsinline
+            poster=""
+          ></video>
+          <div id="player-message" class="player-message" hidden></div>
+        </div>
+        <div class="player-controls">
+          <label class="control-label" for="source-selector">Quality</label>
+          <select id="source-selector" class="source-selector" data-role="source-selector"></select>
+        </div>
+      </section>
+
+      <footer class="player-footer">
+        <p>
+          Update <code>web/player-config.json</code> with your own media sources. You can
+          link to MP4 files, HLS manifests (<code>.m3u8</code>) or DASH manifests
+          (<code>.mpd</code>), and the player will automatically pick the first playable
+          option.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.6/dist/hls.min.js" integrity="sha384-/w+OyADdlqVIGZADa7nmG/pl6gSkdVXNSyy+MyO+Yk5jHxYhPn2TYaZYARt50o5E" crossorigin="anonymous"></script>
+    <script type="module" src="./player.js"></script>
+  </body>
+</html>
